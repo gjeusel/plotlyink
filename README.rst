@@ -17,7 +17,7 @@ plotlyink
 Marying plotly & pandas
 
 :License: MIT license
-:Documentation: http://plotlyink.readthedocs/en/latest
+:Documentation: http://plotlyink.readthedocs.io/en/latest
 :Source: https://github.com/gjeusel/plotlyink
 
 
