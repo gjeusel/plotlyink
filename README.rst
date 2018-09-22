@@ -23,7 +23,27 @@ Marying plotly & pandas
 
 Installation
 ------------
-
 .. code:: bash
 
-    pip install plotlyink
+    pip3 install plotlyink
+
+
+Overview
+--------
+.. code:: python
+
+    import pandas as pd
+    import plotlyink
+    df = pd.DataFrame({
+        'one' : [1., 2., 3., 4.],
+        'two' : [4., 3., 2., 1.],
+        })
+
+    # open .html in your browser:
+    df.iplot.scatter()
+
+    # get figure:
+    fig = df.iplot.scatter(as_figure=True)
+
+
+For more, see: `Tutorial Notebook <http://nbviewer.jupyter.org/github/gjeusel/plotlyink/blob/master/notebooks/tutorial.ipynb>`_.
