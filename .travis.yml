@@ -1,24 +1,17 @@
 language: python
 python:
-  - 3.6
-
+- '3.6'
+script:
+- pytest
 install:
-    - pip install -r requirements-dev.txt
-    - pip install .
-
-script: pytest
-
-# Assuming you have installed the travis-ci CLI tool, after you
-# create the Github repo and add it to Travis, run the
-# following command to finish PyPI deployment setup:
-# $ travis encrypt --add deploy.password
+- pip install .
+- pip install -r requirements-dev.txt
 deploy:
   provider: pypi
-  distributions: sdist bdist_wheel
   user: gjeusel
   password:
-    secure: PLEASE_REPLACE_ME
+    secure: uHxHUARVBBIcVi7Y9+RRlAYi4Q1aM6dt81wwogKQy2wcPQzeVfS2UVLFunoulE0rNx1UTgGV9Z6zyI2VK8t9xrS0+swltaycdXCoqkyymSmWw/f9Fdm+veM/nsjr0SyItybbCx+CUS3T/fa5DzPmbbDImXwf8ngVBRtSMZROLbUqFleKZn2p4N9047HMpubOhBlPREZU1PJVtbQqgLMGKwbnAL0/pzWjNGevBd2Ow0XpvENrVlDWTb561K8ADE1IQ9zrYMIfvk8c/K1dbvykGwjunzArA93gSYDDebS2CTiAYi5XgbAk9/t9S9NDW1UaLI96dJVhbzbfmt8TJZFqxyxRuHOSV5F4HcWzF9g1fcaqELJ5pv7VtTbVmQGEKdGzChTydp/KW41pbMTn3QvEiH+3Zb/V35LmlLj2SQsPBdhm4osiTZQF+P6ekl2j845Q5Mro7Z5zpC5XrEewNnQc/P3FIGVZHpxk3MzJQkoNNt2ozloNhwKTZK0HBj6WSjWNx2c+LiIjvRfs9nO2LUaEqoHbkvSWuleioom5MtrvMHid8RE1+zTx32AMQmpTLb4l6qCXU467lmrrfH1ui4GY86B7u/bbTdfDtCM47k59Zys3nKmlYQoOtrf8+sWZheQ5wrhNboAn28Dp7QopMVUwXQ+D7CntRjZ0zdOs6DQqi0c=
+  skip_cleanup: true
   on:
     tags: true
-    repo: gjeusel/plotlyink
-    python: 3.6
+    branch: master

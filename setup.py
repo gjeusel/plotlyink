@@ -6,7 +6,6 @@ except ImportError:
     BuildDoc = None
 
 setup(
-    package_dir={'': 'src'},
     setup_requires=['pbr'],
     pbr=True,
     cmdclass={'build_sphinx': BuildDoc},

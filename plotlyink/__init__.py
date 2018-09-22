@@ -1,17 +1,10 @@
-import os
-from pkg_resources import get_distribution, DistributionNotFound
+import plotly
+from .config import set_config_file, get_config_file, run_from_ipython
+from .register_pandas_accessors import FrameIplotMethods
 
-try:
-    _dist = get_distribution('plotlyink')
 
-    # Normalize case for Windows systems
-    dist_loc = os.path.normcase(_dist.location)
-    here = os.path.normcase(__file__)
-
-    if not here.startswith(os.path.join(dist_loc, 'plotlyink')):
-        # not installed, but there is another version that *is*
-        raise DistributionNotFound
-except DistributionNotFound:
-    __version__ = 'Version not found.'
-else:
-    __version__ = _dist.version
+# If inside ipython shell, init_notebook_mode
+# connected = True -> for smaller file sizes (plotly.js will be loaded from an
+# online CDN inplace of inlining the entire plotly.js into the notebook)
+if run_from_ipython():
+    plotly.offline.init_notebook_mode(connected=False)
