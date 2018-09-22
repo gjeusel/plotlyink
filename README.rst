@@ -7,8 +7,8 @@ plotlyink
 .. image:: https://readthedocs.org/projects/plotlyink/badge/?version=latest
    :target: http://plotlyink.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
-.. image:: https://coveralls.io/repos/github/gjeusel/plotlyink/badge.svg
-   :target: https://coveralls.io/github/gjeusel/plotlyink
+.. image:: https://codecov.io/gh/gjeusel/plotlyink/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/gjeusel/plotlyink
 .. image:: https://badge.fury.io/py/plotlyink.svg
    :target: https://pypi.python.org/pypi/plotlyink/
    :alt: Pypi package

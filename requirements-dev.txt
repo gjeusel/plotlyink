@@ -6,5 +6,6 @@ isort
 
 pytest
 pytest-cov
+codecov
 
 -r docs/requirements.txt
