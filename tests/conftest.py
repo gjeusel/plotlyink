@@ -38,6 +38,10 @@ class RecoderBase():
         self.mode = mode
         self.bucket_name = bucket_name
         self.dataset = dataset
+
+        self.read_and_process_csv()
+
+    def read_and_process_csv(self):
         self.df = pd.read_csv(DATASETS_DIR / '{}.csv'.format(self.dataset))
 
     def send_figure(self, fig):
@@ -85,5 +89,11 @@ def pokemon_recorder(request):
     class Recorder(RecoderBase):
         def __init__(self, bucket_name):
             super().__init__('pokemon', bucket_name, mode)
+
+        def read_and_process_csv(self):
+            fpath = DATASETS_DIR / '{}.csv'.format(self.dataset)
+            self.df = pd.read_csv(fpath).drop(
+                columns=['#', 'Type 1', 'Type 2', 'Legendary']
+            ).set_index('Name')
 
     yield Recorder

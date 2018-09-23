@@ -95,33 +95,3 @@ def recursive_update(result, updater):
         else:
             result[key] = value
     return result
-
-
-def compare_dict(dict1, dict2, equivalent=True, msg='', tol=10e-8):
-    for key in dict1:
-        if key not in dict2:
-            return (False,
-                    "{0} should be {1}".format(
-                        list(dict1.keys()), list(dict2.keys())))
-    for key in dict1:
-        if isinstance(dict1[key], dict):
-            equivalent, msg = compare_dict(dict1[key],
-                                           dict2[key],
-                                           tol=tol)
-        elif isinstance(dict1[key], Num) and isinstance(dict2[key], Num):
-            if not comp_nums(dict1[key], dict2[key], tol):
-                return False, "['{0}'] = {1} should be {2}".format(key,
-                                                                   dict1[key],
-                                                                   dict2[key])
-        elif is_num_list(dict1[key]) and is_num_list(dict2[key]):
-            if not comp_num_list(dict1[key], dict2[key], tol):
-                return False, "['{0}'] = {1} should be {2}".format(key,
-                                                                   dict1[key],
-                                                                   dict2[key])
-        elif not (dict1[key] == dict2[key]):
-                return False, "['{0}'] = {1} should be {2}".format(key,
-                                                                   dict1[key],
-                                                                   dict2[key])
-        if not equivalent:
-            return False, "['{0}']".format(key) + msg
-    return equivalent, msg

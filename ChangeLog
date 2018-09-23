@@ -1,0 +1,9 @@
+CHANGES
+=======
+
+* Adding auto-generation of notebook tests summarize
+* fix link doc
+* Switch to codecov
+* Update readme
+* Putting tests in place & plotly 3.x.x compat
+* First commit thx to cookiecutter
