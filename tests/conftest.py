@@ -1,18 +1,18 @@
 import json
-import os
 import logging
-import unittest
 from pathlib import Path
 
 import pandas as pd
-import plotly
-from plotly.utils import PlotlyJSONEncoder
 import pytest
 
+import plotly
 import plotlyink
+from plotly.utils import PlotlyJSONEncoder
 from plotlyink.testing import assert_figure_equal
 
 logger = logging.getLogger(__file__)
+
+plotlyink.register_pandas_iplot_accessor()
 
 DATA_DIR = Path(__file__).parent / 'data'
 DATASETS_DIR = DATA_DIR / 'datasets'
@@ -33,7 +33,7 @@ def pytest_addoption(parser):
         help="Ask to generate samples for non existing ones only.")
 
 
-class RecoderBase(unittest.TestCase):
+class RecoderBase():
     def __init__(self, dataset, bucket_name, mode=None):
         self.mode = mode
         self.bucket_name = bucket_name
